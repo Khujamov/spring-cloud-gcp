@@ -165,7 +165,7 @@ jobs:
         run: |
           ./mvnw \
             --batch-mode \
-            --activate-profiles release \
+            --activate-profiles release,docs \
             -DskipTests \
             -Dgpg.skip \
             -Dcheckstyle.skip \

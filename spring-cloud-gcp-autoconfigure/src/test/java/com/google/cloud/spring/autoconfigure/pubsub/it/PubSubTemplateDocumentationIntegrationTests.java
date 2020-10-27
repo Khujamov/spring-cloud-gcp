@@ -79,9 +79,12 @@ public class PubSubTemplateDocumentationIntegrationTests {
 			//end::publish[]
 			PubsubMessage pubsubMessage = pubSubTemplate.pullNext(subscriptionName);
 
-			assertThat(pubsubMessage.getData()).isEqualTo(ByteString.copyFromUtf8("message"));
-			assertThat(pubsubMessage.getAttributesCount()).isEqualTo(1);
-			assertThat(pubsubMessage.getAttributesOrThrow("key1")).isEqualTo("val1");
+			await().atMost(Duration.TWO_SECONDS).untilAsserted(() -> {
+				assertThat(pubsubMessage).isNotNull();
+				assertThat(pubsubMessage.getData()).isEqualTo(ByteString.copyFromUtf8("message"));
+				assertThat(pubsubMessage.getAttributesCount()).isEqualTo(1);
+				assertThat(pubsubMessage.getAttributesOrThrow("key1")).isEqualTo("val1");
+			});
 		});
 	}
 

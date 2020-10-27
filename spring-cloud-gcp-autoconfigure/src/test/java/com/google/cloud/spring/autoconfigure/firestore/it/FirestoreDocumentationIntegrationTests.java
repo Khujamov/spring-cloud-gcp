@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.cloud.spring.sample.firestore;
+package com.google.cloud.spring.autoconfigure.firestore.it;
 
 import java.util.Arrays;
 import java.util.concurrent.ExecutionException;
@@ -43,6 +43,7 @@ import static org.assertj.core.api.Assumptions.assumeThat;
  */
 public class FirestoreDocumentationIntegrationTests {
 	private final ApplicationContextRunner contextRunner = new ApplicationContextRunner()
+			.withPropertyValues("spring.cloud.gcp.firestore.project-id=spring-cloud-gcp-ci-firestore")
 			.withConfiguration(AutoConfigurations.of(GcpContextAutoConfiguration.class,
 					GcpFirestoreAutoConfiguration.class));
 

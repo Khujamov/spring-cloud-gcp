@@ -133,6 +133,7 @@ jobs:
             --define maven.javadoc.skip=true \
             --define skip.surefire.tests=true \
             --define it.${{ matrix.it }}=true \
+            --threads 1.5C \
             verify
       - name: Archive logs
         if: always()

@@ -208,6 +208,7 @@
 						<excludes>
 							<exclude>${integration-test.pattern}</exclude>
 						</excludes>
+						<parallel>classesAndMethods</parallel>
 					</configuration>
 				</plugin>
 				<plugin>
@@ -219,6 +220,7 @@
 						<includes>
 							<include>${integration-test.pattern}</include>
 						</includes>
+						<parallel>classesAndMethods</parallel>
 					</configuration>
 				</plugin>
 				<plugin>
